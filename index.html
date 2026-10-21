@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoboTech Academy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="logo-area">
+            <span>RoboTech Academy</span>
+            <img class="logo-image" src="Emblema de cerebro IA y mano robótica.png" alt="Emblema de cerebro y mano robótica">
+        </div>
+        <nav class="main-nav">
+            <button type="button" class="nav-title" data-highlight="intro">INICIO</button>
+            <button type="button" class="nav-title" data-highlight="workshops">TALLERES</button>
+            <button type="button" class="nav-title" data-highlight="email">PROYECTOS</button>
+        </nav>
+    </header>
+
+    <main class="grid-container">
+        
+        <section class="column col-rover" id="intro">
+            <h2>Desafío Rover Autónomo</h2>
+            <div class="card-content">
+                <p class="intro-tag">¿Quieres construir el futuro con tus propias manos? Únete a nuestro equipo de robótica para pasar de la teoría a la práctica diseñando, programando y dando vida a proyectos reales en un entorno colaborativo. ¡súmate y lidera la innovación con nosotros!</p>
+            </div>
+        </section>
+
+        <section class="column col-middle">
+            <img class="image-placeholder" src="images.jpeg" alt="Grupo de robótica">
+            <a href="index2.html" class="btn-enroll">Inscribir Mi Equipo</a>
+        </section>
+
+        <section class="column col-workshops">
+            <div class="workshop-card">
+                <h3>TALLER DE IMPRESIÓN 3D</h3>
+                <div class="card-content">
+                    <p class="intro-tag">¡Materializa tus ideas! Aprende a diseñar y fabricar tus propios objetos en 3D.</p>
+                </div>
+                <a href="index3.html" class="link-btn">Más información</a>
+            </div>
+
+            <div class="workshop-card">
+                <h3>INICIACIÓN A ARDUINO Y SENSORES</h3>
+                <div class="card-content">
+                    <p class="intro-tag">¡Dale vida a la tecnología! Domina la electrónica programando tus propios sensores.</p>
+                </div>
+                <a href="index4.html" class="link-btn">Más información</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="main-footer">
+        <p>© 2026 RoboTech Academy - Innovación y Robótica</p>
+        <p class="footer-email" id="email">Laboratorios @robotech.edu</p>
+    </footer>
+
+    <script>
+        const navigationTargets = {
+            intro: {
+                highlights: [document.querySelector("#intro")],
+                scrollTarget: document.querySelector("#intro")
+            },
+            workshops: {
+                highlights: document.querySelectorAll(".workshop-card"),
+                scrollTarget: document.querySelector(".col-workshops")
+            },
+            email: {
+                highlights: [document.querySelector("#email")],
+                scrollTarget: document.querySelector("#email")
+            }
+        };
+
+        document.querySelectorAll(".nav-title").forEach((button) => {
+            button.addEventListener("click", () => {
+                document.querySelectorAll(".highlighted").forEach((target) => {
+                    target.classList.remove("highlighted");
+                });
+
+                const { highlights, scrollTarget } = navigationTargets[button.dataset.highlight];
+
+                highlights.forEach((target) => {
+                    target.classList.add("highlighted");
+                });
+
+                scrollTarget.scrollIntoView({ behavior: "smooth", block: "center" });
+            });
+        });
+    </script>
+
+</body>
+</html>
